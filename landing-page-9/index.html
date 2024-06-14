@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <a href="">GAURAVS</a>
+            </div>
+            <div class="links">
+                <div class="link">
+                    <a href="">Conatct Us</a>
+                </div>
+                <div class="link">
+                    <a href="">Menu</a>
+                </div>
+            </div>
+        </nav>
+
+        <footer>
+            <p>&copy;2024</p>
+            <p>Scroll To Explore</p>
+        </footer>
+
+        <div class="hero-vid">
+            <video src="/home-vidio.mp4" loop muted autoplay></video>
+        </div>
+
+        <div class="blocks">
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+            <div class="block"></div>
+        </div>
+
+        <div class="header">
+            <div class="header-item">
+                <div class="header-item-wraper h-1"><h1>G</h1></div>
+            </div>
+            <div class="header-item">
+                <div class="header-item-wraper h-2"><h1>A</h1></div>
+            </div>
+            <div class="header-item">
+                <div class="header-item-wraper h-3"><h1>U</h1></div>
+            </div>
+            <div class="header-item">
+                <div class="header-item-wraper h-4"><h1>R</h1></div>
+            </div>
+            <div class="header-item">
+                <div class="header-item-wraper h-5"><h1>A</h1></div>
+            </div>
+            <div class="header-item">
+                <div class="header-item-wraper h-6"><h1>V</h1></div>
+            </div>
+            <div class="header-item">
+                <div class="header-item-wraper h-7"><h1>S</h1></div>
+            </div>
+        </div>
+
+        <div class="counter">
+            <p>
+                3 <br> 
+                2 <br>
+                1
+            </p>
+        </div>
+
+        <div class="tagline">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi excepturi voluptas maiores tempore id nobis est vel dignissimos, perspiciatis nam.</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="index.js"></script>
+
+    <script>
+        const tl = gsap.timeline({ delay: 1.75});
+        const moovements = [-100, 260, 150, -300, -90, 120, -200];
+
+        gsap.set('h1',{y:100});
+        gsap.set('.counter p', { y:35});
+
+
+        tl.to('h1',{
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            stagger: 0.1
+        });
+
+        tl.to('.counter p', {
+            y: 0,
+            duration: 0.5,
+            ease: 'power3.out',
+        },"-=0.5");
+        tl.to('.counter p', {
+            y: -35,
+            duration: 0.5,
+            ease: 'power3.out',
+            delay:0.5,
+        });
+        tl.to('.counter p', {
+            y: -70,
+            duration: 0.5,
+            ease: 'power3.out',
+            delay:0.5,
+        });
+        tl.to('.counter p', {
+            y: -105,
+            duration: 0.5,
+            ease: 'power3.out',
+            delay:0.75,
+        });
+
+        tl.from('.tagline',{
+            y:40,
+            opacity:0,
+        },"-=4");
+
+        tl.to('h1',{
+            fontSize:'16vw',
+            duration: 1,
+            ease: 'power3.out',
+        });
+
+
+
+        tl.to('.header-item',{
+            clipPath: 'none',
+            duration: 0.1,
+        },"<");
+
+        tl.to('.block',{
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+            duration:0.5,
+            stagger:{
+                amount: 0.5,
+                from: 'random',
+                ease:'power3.out'
+            }
+        },"<");
+
+        moovements.forEach((move,index)=>{
+            tl.to(`.h-${index + 1}`,{
+                y: move,
+                duration: 1,
+                ease: 'power3.out',
+            },"<")
+        });
+
+        tl.from('.logo, .link, footer p',{
+            y:40,
+            opacity:0,
+            stagger:0.2,
+        });
+    </script>
+</body>
+</html>
